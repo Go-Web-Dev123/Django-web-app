@@ -1,0 +1,197 @@
+
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Login</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="icon" href="{% static 'metaicon.png' %}"type="image/gif" sizes="16x16" >
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" >
+    <style>
+        /* Made with love by Mutiullah Samim*/
+
+        @import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Titillium+Web&display=swap');
+
+
+
+html,body{
+background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+
+font-family: 'Mate SC', serif;
+font-family: 'Titillium Web', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: auto;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+    </style>
+</head>
+<body>
+	
+<div class="container">
+	
+	<div class="d-flex justify-content-center h-100">
+		<h1 style="color:white;position:absolute;
+		top:8%"><b> <i class="fas fa-user-md fa-1.5x"></i>&nbsp;&nbsp;Doctor Login</b></h1>
+		<div class="card">
+			
+			<div class="card-header">
+				<h3>Sign In</h3>
+
+			</div>
+			<div class="card-body">
+                <form action="/doctor/profile/" method="POST">
+                    {% csrf_token %}
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="username" name="username">
+						
+					</div><br/><br/>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password" name="password" id="password"><i class="bi bi-eye-fill" id="first" style="position: absolute;
+						top: 25%;
+						color: black;
+						left: 90%;" onclick="clicks();"></i><i class="bi bi-eye-slash-fill" id="second" style="position: absolute;
+						top: 25%;
+						color: black;
+						left: 90%;
+						visibility:hidden;z-index:1" onclick="clicking();"></i>
+					</div><br/>
+					<div class="form-group">
+						<a href="/" class="btn btn-warning" >Home</a>
+						<input type="submit" value="Login" class="btn float-right login_btn">
+					</div><br/>
+					<a href="/doctor/forgot_password/" class="btn btn-link" style="position:relative;margin-left:-10px;float:right;"><b>Forgot Password</b></a><br/>
+
+					<br/>
+					{% for messages in messages %}
+					<div class="alert {{ messages.tags }} alert-dismissible" role="alert" style="text-align: center;">
+			 {{messages}}
+			 </div>
+			 {% endfor %}
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+<script>
+	function clicks(){
+		var pass=document.getElementById('password');
+		var eye=document.getElementById('first');
+		var eye1=document.getElementById('second');
+		if(pass.type=='password'){
+			pass.type='text';
+			eye.style.visibility="hidden";
+			eye1.style.visibility="visible";
+	
+		}
+	}
+	function clicking(){
+		var pass=document.getElementById('password');
+		var eye=document.getElementById('first');
+		var eye1=document.getElementById('second');
+		if(pass.type=='text'){
+			pass.type='password';
+			eye.style.visibility="visible";
+			eye1.style.visibility="hidden";
+	
+		}
+	}
+</script>
+</body>
+</html>

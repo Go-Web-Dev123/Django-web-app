@@ -7,36 +7,72 @@
     <title>Profile</title>
     </head>
 <body>
-
-{% block content %}
-
-{%load static %}
-{% for employee in employee_list %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<div class="topper">
-    <h4 class="names">Hello, {{employee.fullname}}</h4>
-    <a type="button" class="btn btn-dark btns"id="btn" style="height: 50px;" href="{% url 'logout' %}">Logout</a>
-</div>
+    {% block content %}
+    {%load static %}
+    {% for employee in employee_list %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    
+    
+    <div class="top" style="background-color: white;height:70px;">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <h5 style="color: black;margin-bottom:-30px;margin-top:8px;margin-right:10px">Hello, {{employee.fullname}}</h5>
+              </li>
+          <li class="nav-item">
+            <h5><a class="nav-link navs"  href="/updatepass/{{employee.id}}">Password</a></h5>
+          </li>
+            <li class="nav-item" style="margin-top:4px;">
+                <div class="dropdown show">
+                    <a class=" dropdown-toggle" style="text-decoration:none;color:black;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Reports
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item"  href="/reports/{{employee.fullname}}/">Reports</a>
+                      <a class="dropdown-item" href="/prescription/{{employee.fullname}}/">Prescription</a>
+                    </div>
+                  </div>
+            </li>
+            <li class="nav-item">
+                <h5><a class="nav-link navs"  href="/mydoctor/{{employee.doctor}}/">MyDoctor</a></h5>
+              </li>
+            <li class="nav-item">
+                <h5><a class="nav-link btn btn-warning" style="color: black;font-size:15px" href="{% url 'logout' %}"><b>Logout</b></a></h5>
+              </li>
+              
+            </div>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Titillium+Web&display=swap');
     body{
-        background-color: #E8E8E8;
+        background-image: url('https://wallpaperaccess.com/full/1567665.png');
+
+            font-family: 'Mate SC', serif;
+            font-family: 'Titillium Web', sans-serif;
+
     }
-    .topper{
-        position: fixed;
-        display: inline-flex;
-        top: 0%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 70px;
+    li{
+        padding: 20px;
+        margin-top: -5px;
+    }
+    .navs{
+        font-weight: 500;
+        border-radius: 5px;
+        position: relative;
+        color: black;
+      }
+      .navs:hover{
+        text-decoration: none;
+        border-radius: 5px;
+        color: white;
         background-color: black;
-    }
-    .names{
-        color:white;
-        margin-left: 1150px;
-        margin-top: 18px;
-    }
+      }
+    
     .btns{
         background-color: black!important;
         font-size: 23px;
@@ -46,14 +82,12 @@
         margin-left: 60px;
         border: none;
     }
-
     .images{
         border-radius: 10px;
         margin-top: 100px;
-        margin-left: -80px;
-         width: 450px;
-         height: 450px;   
-         background-color: white;
+        margin-left: 70px;
+         width: 400px;
+         height: 400px;   
     }
     .insideimage{
         padding: 15px;
@@ -62,9 +96,9 @@
     }
     .static{
         padding-top: 5px;
-        height: 300px;
+        height: 250px;
         margin-top: 10px;
-        margin-left: 67px;
+        margin-left: 78px;
     }
     .btn-primary{
         margin-top: 10px;
@@ -72,61 +106,181 @@
         width: 70%;
     }
     .content{
-        margin-left: 400px;
+        margin-left: 600px;
         border-radius: 10px;
-        margin-top: -447px;
+        margin-top: -430px;
         background-color: white;
-        width: 900px;
-        height: 400px;
+        width: 500px;
+        height: auto;
     }
     .insidecontent{
+        width: 80%;
+        margin: auto;
         padding:30px;
     }
     td{
         padding-bottom: 15px;
     }
     .container{
+        margin-top: -50px;
         display: flexbox;
     }
     .marquee{
-        position: absolute;
         top: 9%;
-        font-size: 20px;
+        font-size: 20px;  
+        background-color: lightgrey;     
     }
+    .prescription{
+        padding-left: 35px;
+        padding-right:35px ;
+        padding-bottom:6px ;
+        border-radius: 10px;
+        background-color: white;
+        margin-left:50px;
+        margin-right:50px;
+    }
+    #emails{
+        width: 200px;
+        margin-left:0px;
+    }
+
+    input:focus{
+        outline:none;
+        transform: scale(1.1);
+    }
+    .pass{
+        margin-top: 18px;
+        margin-left:40px;
+        margin-right:-10px;
+    }
+    .link{
+        text-decoration: none;
+        color: white;
+    }
+    .link:hover{
+        color: white;
+    }
+    .full{
+        margin-left: 100px;
+    }
+    b{
+        margin-left: 8px;
+    }
+    .mob{
+        margin-left: 105px;
+    }
+    .ages{
+        margin-left: 160px;
+    }
+    .docs{
+        margin-left:50px;
+    }
+    .bloodss{
+        margin-left: 100px;
+    }
+    .healths{
+        margin-left: 60px;
+    }
+    .heights{
+        margin-left: 150px;
+    }
+    .weights{
+        margin-left:147px
+    }
+    .address{
+        text-align: center;
+        margin-left: 60px;
+        width: 100%;
+    }
+    .checkup{
+        margin-left:25px
+    }
+    .bp{
+        margin-left: 40px;
+    }
+    .sugar{
+        margin-left: 150px;
+    }
+    .gender{
+        margin-left:130px;
+    }
+    .email{
+        margin-left: 50px;
+    }
+
+
 </style>
-<marquee class="marquee">Note&nbsp;-&nbsp;  You cannot change the Username and Mobile Number unless you Contact with the Hospital Admin.</marquee>
 <div class="container">
 <div class="images">
-<h3 class="insideimage">Account Profile</h3>
+<h3 class="insideimage" style="color:white"><b>Profile Picture</b></h3>
 <hr style="width:80%; margin:auto;">
 <img class="static" src="{{ employee.image.url }}"alt="connect" >
 <a type="button" class="btn btn-primary" id="btns"href="/upload/">Update Profile Pic</a>
 </div>
-<div class="content">
+<div class="content"><br/>
     <div class="insidecontent">
     <table>
     <tr>  
-        <td>UserName:&nbsp;&nbsp;<input type="text" value="{{employee.fullname}}" readonly></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-bounding-box"></i>&nbsp;&nbsp;<b>UserName</b><span class="full">{{employee.fullname}}</span></td>
     </tr>
     <tr>
-        <td>Phone:&nbsp;&nbsp;<input type="tel" value="{{employee.mobile}}" readonly></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;<b>Mobile</b><span class="mob">{{employee.mobile}}</span></td>
     </tr>
-</table>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;<b>Age</b><span class="ages">{{employee.age}}</span></td>
+
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user-md fa-1x"></i>&nbsp;&nbsp;<b>Consulting-Doctor</b><span class="docs">{{employee.doctor}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-droplet-fill"></i>&nbsp;&nbsp;<b>Blood-Group</b><span class="bloodss">{{employee.BloodGroup}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class='fas fa-child' style='font-size:20px'></i>&nbsp;&nbsp;<b>Gender:</b><span class="gender">{{employee.gender}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-envelope-fill"></i>&nbsp;&nbsp;<b>Email:</b><span class="email">{{employee.email}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-file-earmark-medical-fill"></i>&nbsp;&nbsp;<b>Health-Issue</b><span class="healths">{{employee.healthissue}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-arrow-bar-up"></i>&nbsp;&nbsp;<b>Height</b><span class="heights">{{employee.height}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-asterisk"></i>&nbsp;&nbsp;<b>Weight</b><span class="weights">{{employee.weight}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-file-earmark-text-fill"></i>&nbsp;&nbsp;<b>Address-</b><span class="address">{{employee.address}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp<i class="bi bi-calendar"></i>&nbsp;&nbsp;<b>Last CheckUp Date:</b><span class="checkup">{{employee.checkup}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp<i class="bi bi-bookmark-x-fill"></i>&nbsp;&nbsp;<b>Blood Pressure:</b><span class="bp">{{employee.BP}}</span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp<i class="bi bi-file-medical-fill"></i>&nbsp;&nbsp;<b>Sugar:</b><span class="sugar">{{employee.sugar}}</span></td>
+    </tr>
+</table><a class="btn btn-primary " id="emails" href="mailto:godevweb123@gmail.com" onclick="hi()">Assist Me</a>
 </div>
 </div>
 </div>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 {% endfor %}
+<br/>
+<br/>
 
+
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script>
+    function hi(){
+        alert("Please Specify Your Username,Mobile Number and your Field to be changed and what to be changed in that required Field in the Respective Assist Email.Thank You")
+    }
+</script>
 
 {% endblock content %}
-
-
-
-
-
 </body>

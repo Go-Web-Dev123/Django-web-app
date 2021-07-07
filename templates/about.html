@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="icon" href="{% static 'about.png' %}"type="image/gif" sizes="16x16" >
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Titillium+Web&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+      body{
+        overflow-x: hidden;
+              font-family: 'Mate SC', serif;
+              font-family: 'Titillium Web', sans-serif;
+            margin: 0;
+          }
+          li{
+            padding: 20px;
+            margin-top: -5px;
+        }
+        .navs{
+            font-weight: 500;
+            border-radius: 5px;
+            position: relative;
+            color: black;
+          }
+          .navs:hover{
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+            background-color: black;
+          }
+          
+          html {
+            box-sizing: border-box;
+          }
+          
+          *, *:before, *:after {
+            box-sizing: inherit;
+          }
+          
+          .column {
+            width: 40%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+            margin-left: 100px;
+          }
+          
+          .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+          }
+          
+          .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+          }
+          
+          .container {
+            padding: 0 16px;
+          }
+          
+          .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+          }
+          
+          .title {
+            color: grey;
+          }
+          
+          .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+          }
+          
+          .button:hover {
+            background-color: #555;
+          }
+          
+          @media screen and (max-width: 650px) {
+            .column {
+              width: 100%;
+              display: block;
+            }
+          }
+          .top{
+            position: relative;
+            z-index: 1;
+        }
+        .down{
+            margin-top: -85px;
+        }
+        .first{
+            margin-top: 10px;
+        }
+        .abouts{
+            margin-top:5px;
+        }
+        .trees{
+          font-family: 'Dancing Script', cursive;
+
+        }
+        a{
+          text-decoration: none;
+        }
+        a:hover{
+          color: white;
+          text-decoration: none;
+        }
+    </style>
+    
+    {%load static %}
+   
+</head>
+<body>
+  <div class="top" style="background-color: white;height:70px;">
+    <ul class="nav justidy-content-start">
+        <li class="nav-item">
+            <h5 class="first "><a href="/" style="text-decoration: none;color:black;">Home</a></h5>
+        </li>
+        <li class="nav-item">
+            <h5 class="abouts  btn btn-warning"><a href="/about/" style="text-decoration: none;color:black;">About</a></h5>
+        </li>
+    </ul>
+    <div class="down">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <h5><a class="nav-link navs"  href="/login/"><i class="bi bi-person-bounding-box"></i>&nbsp;I'm Patient</a></h5>
+      </li>
+        <li class="nav-item">
+          <h5><a class="nav-link navs"  href="/doctor/login/"> <i class="fas fa-user-md fa-1.5x"></i>&nbsp;I'm Doctor</a></h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link navs"  href="/admin/logining/"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;I'm Admin</a></h5>
+          </li>
+          </ul>
+        </div>
+        </div>
+
+    <div class="about-section">
+        <h1 class="trees" style="	color:#228B22;font-size:50px;font-weight:600px;">"He who plants a tree, plants a hope"</h1>
+        <h4>Paperless hospitals is a concept in which we are reducing the usage of papers in hospitals by digitalizing them.  Digitalization is done by registering the patients using their unique Mobile Number for each patients  in which the information will be stored in a unique way in the Database.  We will store all the information like Xray , reports, lab test results and patient details in the Database and it will be secured by our IT professionals,  and so it will be used for retrieving all kind of data of that particular patient for that patient.  This may serve Digitalization and reduce the use of huge amount of papers in Hospital.</h4>
+        <h2 style="font-family: 'Play', sans-serif;"><b>So let's make Hospitals go Paperless and move Future with the Technology.</b></h2>
+      </div>
+      
+      <h2 style="text-align:center">WHO WE ARE</h2>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="{% static 'user.png' %}" alt="Jane" style="width:35%;height:250px;margin:auto;">
+            <div class="container" style="text-align: center;">
+              <h2 >HariHaran Balakrishnan</h2>
+              <p class="title">Developer</p>
+              <p>Student in PSG College of Technology</p>
+              <p>balahari765@gmail.com</p>
+              <p><a class="button" href="mailto:balahari765@gmail.com">Contact</a></p>
+            </div>
+          </div>
+        </div>
+
+      
+        <div class="column">
+          <div class="card">
+            <img src="{% static 'user.png' %}" alt="Jane" style="width:35%;height:250px;margin:auto;">
+            <div class="container" style="text-align: center;">
+              <h2 >Sri Guru Prasath Maruthachalam</h2>
+              <p class="title">Developer</p>
+              <p>Student in PSG College of Technology</p>
+              <p>sriguru123cbe@gmail.com</p>
+              <p><a class="button" href="mailto:sriguru123cbe@gmail.com">Contact</a></p>
+            </div>
+          </div>
+        </div>
+</body>
+</html>

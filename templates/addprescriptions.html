@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Prescription</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<style>
+    .tops{
+        margin-top: 30px!important;
+        width: 60%;
+        margin: auto;
+    }
+    .forms{
+        width: 800px;
+    }
+    .btns{
+        width: 70px;
+    }
+    li{
+        margin-top: -20px;
+        padding: 20px;
+    }
+    .nav-link{
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        color: white;
+    }
+    .nav-link:hover{
+        padding: 10px;
+        border-radius: 5px;
+        color: black!important;
+        background-color: white;
+    }
+    ul{
+        display: flex;
+    }
+    .cons{
+        margin-top: 7px;
+    }
+    .title{
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="top" style="background-color: black;height:70px;">
+        <ul class="nav justify-content-end cons"style="float:right;margin-right:40px">
+          <li class="nav-item">
+            <h3><a class="nav-link "  href="/doctor/profiles/">Home</a></h3>
+          </li>
+            <li class="nav-item">
+              <h3><a class="nav-link "   href="/doctor/myprescriptions/">MyPrescription</a></h3>
+            </li>
+            <li class="nav-item">
+                <h3><a class="nav-link "  href="/doctor/logout">Logout</a></h3>
+              </li>
+              
+            </div>
+    {% for i in prescription %}
+    <h1 class="title"><b>Add Reports</b></h1>
+    <form action="/doctor/addprescriptions/{{i.id}}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="tops">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Patient Username:</label>
+            <input type="text" class="form-control forms" id="exampleInputEmail1" name="username" value="{{i.fullname}}" readonly>
+ 
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Patient Mobile</label>
+            <input type="text" class="form-control forms" id="exampleInputEmail1" name="mobile" value="{{i.mobile}}" readonly><br/>
+
+        </div>
+    <div class="form">
+        <label >Your Advise</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Your Advice" name="prescription" required></textarea>
+      </div><br/><br/>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Add Reports:</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+      </div>
+    <button type="submit" class="btn btn-primary btns">Add</button><br/><br/>
+
+</div>
+</form>
+    {% endfor %}
+
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <script>
+        swal("Good job!", "Successfully Added Prescription", "success");
+    
+    </script>
+
+</body>
+</html>

@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="{% static 'metaicon.png' %}"type="image/gif" sizes="16x16" >
+<style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Titillium+Web&display=swap');
+
+body{
+
+
+
+    font-family: 'Mate SC', serif;
+    font-family: 'Titillium Web', sans-serif;
+
+}
+
+</style>
 </head>
 <body>
 
     {%load static%}
     <link rel="stylesheet" href="{% static 'new2.css' %}" />
-    <div class="image"></div>
+    <div class="image" style="background-image: url('http://getwallpapers.com/wallpaper/full/5/a/b/693674-top-hospital-wallpapers-1920x1080-full-hd.jpg');   background-repeat: no-repeat;
+    background-size: cover;"></div>
     <div class="overlay"></div>
         <div class="cover" style="margin: auto;
-        width: 70%;
-        height: 80vh;">
+        width: 60%;
+        min-height: 80vh;margin-top:100px">
     <form action="/profile/" method="POST" >
         {% csrf_token %}
     <div class="container">
         <div class="col-md-10 offset-md-1 mt-5">
             <div class="jumbotron"><br/><br/><br/>
-                <h1 class="display-4"><b>User Login Form</b></h1>
-                <hr class="my-4"><br/>
+                <h1 class="display-4"><b><i class="bi bi-person-bounding-box"></i>&nbsp;&nbsp;<span style="color:#808080">User Login Form</span></b></h1>
+                <hr class="my-4">
                 <div class="myclass">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">&nbspPhone-Number</label>        
+                        <label for="exampleInputPassword1">&nbsp;<i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;Phone-Number</label>        
                     <input type="text" class="form-control"  name="mobile" placeholder="Phone-Number" required>
                     </div>
                 </div><br/>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">&nbspPassword</label>        
+                        <label for="exampleInputPassword1">&nbsp;<i class="bi bi-shield-lock-fill"></i>&nbsp;&nbsp;Password</label>        
                     <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
-                    <i class='far fa-eye'  id="first" style="position:absolute;top:55.5%;left:86%" onclick="clicks();"></i>    
+                    <i class="bi bi-eye-fill"  id="first" style="position:absolute;top:53%;left:86%" onclick="clicks();"></i>  
+                    <i class="bi bi-eye-slash-fill" id="second" style="position:absolute;top:53%;left:86%;visibility:hidden;" onclick="clicking();"></i> 
                 </div>
                 </div>
             </div><br/>
             {% for messages in messages %}
-     <p style="color: red;margin-top:5px">{{messages}} </p>
+            <div class="alert {{ messages.tags }} alert-dismissible" role="alert" style="text-align: center;width:100%;margin:auto;">
+     {{messages}}
+     </div><br/>
      {% endfor %}
-            <button type="submit" class="btn btn-success">Login</button>
+            <button type="submit" class="btn btn-success">Login</button><br/>
+            <a href="/forgotpassword/" class="btn btn-link" style="margin-left:-10px;margin-top:-35px;float:right;">Forgot Password</a><br/>
+
             </div>
+            <a href="/" class="btn btn-warning" style="float:right;">Home</a>
         </div>
 
-    </div><div class="footer" style="position:relative;margin-left:700px;margin-bottom:-30px">
-    Don't have an account?&nbsp&nbsp
-</div>
-<a type="button" class="btn btn-dark" style="position:relative;left:82%;top:64%;"href='/'>Sign up</a>
+    </div>
+
 </form>
 <script src= "{% static 'new1.js' %}" type="text/javascript" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -57,13 +79,23 @@
     function clicks(){
         var pass=document.getElementById('exampleInputPassword1');
         var eye=document.getElementById('first');
+        var eye1=document.getElementById('second');
         if(pass.type=='password'){
             pass.type='text';
-            eye.style.color="lightblue";
+            eye.style.visibility="hidden";
+            eye1.style.visibility="visible";
     
-        }else{
+        }
+    }
+    function clicking(){
+        var pass=document.getElementById('exampleInputPassword1');
+        var eye=document.getElementById('first');
+        var eye1=document.getElementById('second');
+        if(pass.type=='text'){
             pass.type='password';
-            eye.style.color="black";
+            eye.style.visibility="visible";
+            eye1.style.visibility="hidden";
+    
         }
     }
 </script>
