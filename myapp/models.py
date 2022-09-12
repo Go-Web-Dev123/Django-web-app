@@ -55,5 +55,5 @@ class advise(models.Model):
 
 class manager(models.Model):
     username=models.CharField(max_length=255)
-    email=models.CharField(default="balahari765@gmail.com",max_length=255)
+    email=models.CharField(default="",max_length=255)
     password=models.CharField(max_length=50)
